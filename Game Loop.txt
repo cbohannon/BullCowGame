@@ -1,0 +1,17 @@
+GAME LOOP
+
+* Great the Player
+* Provide Instructions 
+* Start Game
+* Start with Three Lives
+* Set Isogram (Hidden Word)
+* User Input - Prompt for Guess
+* Check Input
+** If Correct
+*** Win
+** If Incorrect
+*** Lose a Life
+**If Max Lives Lost
+*** End Game
+**If Max Lives not Lost
+***Try Agin
