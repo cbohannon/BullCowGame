@@ -1,17 +1,22 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 #include "BullCowCartridge.h"
-#include "HiddenWordList.h"
+#include "FileHelper.h"
 #include "pch.h"
+#include <Runtime\Core\Public\Misc\Paths.h>
 
 
 void UBullCowCartridge::BeginPlay() // When the game starts
 {
     Super::BeginPlay();
 
+    TArray<FString> WordListFile;
+    const FString WordListPath = FPaths::ProjectContentDir() / TEXT("HiddenWordList.txt");
+    FFileHelper::LoadFileToStringArray(WordListFile, *WordListPath);
+
     SetupGame();
 
-    PrintLine(TEXT("The number of possible words is %i."), Words.Num());
-    PrintLine(TEXT("The number of valid words is %i"), GetValidWords(Words).Num());
+    PrintLine(TEXT("The number of possible words is %i."), WordListFile.Num());
+    PrintLine(TEXT("The number of valid words is %i"), GetValidWords(WordListFile).Num());
     PrintLine(TEXT("DEBUG-The HiddenWord is: %s."), *HiddenWord); // This is a debug line
 }
 
